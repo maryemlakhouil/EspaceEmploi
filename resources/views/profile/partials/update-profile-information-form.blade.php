@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
 
@@ -45,6 +45,18 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+          <div>
+            <x-input-label for="bio" value="Bio" />
+            <textarea id="bio" name="bio" class="block mt-1 w-full">
+                {{ old('bio', auth()->user()->bio) }}
+            </textarea>
+        </div>
+
+        <div>
+            <x-input-label for="photo" value="Photo de profil" />
+            <input type="file" name="photo" class="block mt-1 w-full">
         </div>
 
         <div class="flex items-center gap-4">
