@@ -12,8 +12,8 @@
         </p>
 
         <!-- Formulaire de recherche -->
-        <form method="GET" action="{{ route('search.index') }}" class="mb-6">
-            <div class="grid grid-cols-2 gap-4">
+        <form method="GET" action="{{ route('search.index') }}" class="bg-white p-6 rounded-lg shadow mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                     <x-input-label for="name" value="Nom" />
                     <x-text-input
@@ -41,21 +41,34 @@
         </form>
 
         <!-- Résultats -->
-        <div class="space-y-4">
-            @forelse($users as $user)
-                <div class="p-4 border rounded-lg bg-white shadow-sm">
-                    <h3 class="font-bold text-lg">{{ $user->name }}</h3>
-                    <p class="text-gray-600">{{ $user->specialite ?? '—' }}</p>
 
-                    <a href="{{ route('users.show', $user->id) }}"
-                       class="text-blue-600 hover:underline">
-                        Voir profil
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            @forelse($users as $user)
+            <div class="bg-white p-6 rounded-lg shadow hover:shadow-md transition">
+                <div class="flex items-center space-x-4">
+                    <img
+                        src="{{ $user->photo ? asset('storage/'.$user->photo) : 'https://via.placeholder.com/80' }}"
+                        class="w-20 h-20 rounded-full object-cover"
+                    >
+
+                    <div>
+                        <h3 class="font-bold text-lg">{{ $user->name }}</h3>
+                        <p class="text-gray-600">{{ $user->specialite ?? '—' }}</p>
+                    </div>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{{ route('users.show', $user) }}"
+                       class="inline-block text-blue-600 font-medium hover:underline">
+                        Voir profil →
                     </a>
                 </div>
-            @empty
-                <p class="text-gray-500">Aucun utilisateur trouvé.</p>
-            @endforelse
-        </div>
+            </div>
+        @empty
+            <p class="text-gray-500">Aucun utilisateur trouvé.</p>
+        @endforelse
+    </div>
+
 
     </div>
 </x-app-layout>
