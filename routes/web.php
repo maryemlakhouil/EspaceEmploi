@@ -24,6 +24,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard.chercheur');
 
     Route::get('/search', [UserSearchController::class, 'index'])->middleware('auth')->name('search');
+    Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
 
 });
 
