@@ -23,7 +23,7 @@
             <!-- Recherche -->
             <a href="{{ route('search.index') }}"
                class="bg-blue-50 p-6 rounded-lg shadow hover:bg-blue-100 transition">
-                <h4 class="font-bold text-lg">Rechercher des profils</h4>
+                <h4 class="font-bold text-lg">Rechercher des profils</h4>   
                 <p class="text-gray-600 mt-2">
                     Trouvez des recruteurs ou d’autres chercheurs par spécialité.
                 </p>
