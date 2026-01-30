@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserSearchController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('welcome');
@@ -23,7 +26,7 @@ Route::middleware('auth')->group(function () {
         return view('dashboard.chercheur');
     })->name('dashboard.chercheur');
 
-    Route::get('/search', [UserSearchController::class, 'index'])->middleware('auth')->name('search');
+    Route::get('/search', [UserSearchController::class, 'index'])->name('search.index');
     Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
 
 });

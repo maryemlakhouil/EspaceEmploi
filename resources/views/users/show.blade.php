@@ -9,6 +9,5 @@
         <p><strong>Spécialité :</strong> {{ $user->specialite ?? '—' }}</p>
         <p><strong>Bio :</strong> {{ $user->bio ?? '—' }}</p>
 
-        <!-- Plus tard : bouton envoyer demande d’amitié -->
     </div>
 </x-app-layout>
