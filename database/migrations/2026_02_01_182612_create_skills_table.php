@@ -11,14 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('experiences', function (Blueprint $table) {
+        Schema::create('skills', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-             $table->foreignId('candidate_profile_id')->constrained()->cascadeOnDelete();
-            $table->string('job_title');
-            $table->string('company');
-            $table->date('start_date');
-            $table->date('end_date')->nullable();
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('experiences');
+        Schema::dropIfExists('skills');
     }
 };
