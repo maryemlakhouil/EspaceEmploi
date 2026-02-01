@@ -14,6 +14,13 @@ return new class extends Migration
         Schema::create('job_offers', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); // recruteur
+            $table->string('company');
+            $table->string('title');
+            $table->text('description');
+            $table->string('contract_type');
+            $table->string('image');
+            $table->boolean('is_closed')->default(false);
         });
     }
 
