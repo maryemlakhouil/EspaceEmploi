@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('applications', function (Blueprint $table) {
+        Schema::create('amitie', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-             $table->foreignId('job_offer_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete(); // candidat
-            $table->string('status')->default('pending');
+            $table->foreignId('sender_id')->constrained('users')->cascadeOnDelete();
+            $table->foreignId('receiver_id')->constrained('users')->cascadeOnDelete();
+            $table->string('status'); // pending, accepted, rejected
             $table->timestamps();
 
-            $table->unique(['job_offer_id', 'user_id']);
+            $table->unique(['sender_id', 'receiver_id']);
         });
     }
 
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('applications');
+        Schema::dropIfExists('amitie');
     }
 };
