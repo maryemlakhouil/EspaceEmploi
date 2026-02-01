@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Education extends Model
 {
+     use HasFactory;
      protected $fillable = [
         'candidate_profile_id',
         'diploma',

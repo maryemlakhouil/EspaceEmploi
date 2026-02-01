@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobOffer extends Model
 {
+     use HasFactory;
     rotected $fillable = [
         'user_id',
         'title',

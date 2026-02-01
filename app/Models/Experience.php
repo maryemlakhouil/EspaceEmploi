@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Experience extends Model
 {
+     use HasFactory;
     protected $fillable = [
         'candidate_profile_id',
         'position',

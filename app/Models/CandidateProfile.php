@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class CandidateProfile extends Model
 {
+     use HasFactory;
     protected $fillable = [
         'user_id',
         'title',

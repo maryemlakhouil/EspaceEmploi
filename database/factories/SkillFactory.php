@@ -18,7 +18,7 @@ class SkillFactory extends Factory
     {
         return [
             'name' => fake()->unique()->randomElement([
-        'Laravel', 'Vue.js', 'React', 'PHP', 'MySQL', 'Anglais'
+        'Laravel', 'Vue.js', 'React', 'PHP', 'MySQL', 'Anglais','Gestion de projet', 
          ]),
         ];
     }
