@@ -54,11 +54,14 @@
             </textarea>
         </div>
 
-        <div>
-            <x-input-label for="photo" value="Photo de profil" />
-            <input type="file" name="photo" class="block mt-1 w-full">
-        </div>
+          <div class="mt-4">
+        <label class="block text-sm font-medium">Photo de profil</label>
 
+        <input type="file"
+               name="photo"
+               accept="image/*"
+               class="mt-1 block w-full">
+    </div>
         <div class="flex items-center gap-4">
             <x-primary-button>{{ __('Save') }}</x-primary-button>
 

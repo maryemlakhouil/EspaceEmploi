@@ -66,6 +66,7 @@
             </div>
         @empty
             <p class="text-gray-500">Aucun utilisateur trouvé.</p>
+
         @endforelse
     </div>
 

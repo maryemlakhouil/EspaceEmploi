@@ -25,32 +25,39 @@ class ProfileController extends Controller
      * Update the user's profile information.
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'bio' => 'nullable|string',
-        'photo' => 'nullable|image|max:2048',
-    ]);
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'bio' => 'nullable|string',
+            'photo' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-    $user = Auth::user();
+        $user = Auth::user();
 
-    if ($request->hasFile('photo')) {
-        $path = $request->file('photo')->store('profiles', 'public');
-        $user->photo = $path; 
+        // Gestion de la photo
+        if ($request->hasFile('photo')) {
+
+            // Supprimer ancienne photo
+            if ($user->photo) {
+                Storage::disk('public')->delete($user->photo);
+            }
+
+            // Enregistrer nouvelle photo
+            $validated['photo'] = $request->file('photo')
+                ->store('profiles', 'public');
+        }
+
+        // Mise à jour des champs
+        $user->update($validated);
+
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+            $user->save();
+        }
+
+        return Redirect::route('profile.edit')
+            ->with('status', 'profile-updated');
     }
-
-    $user->name = $request->name;
-    $user->bio = $request->bio;
-
-    if ($user->isDirty('email')) {
-        $user->email_verified_at = null;
-    }
-
-    $user->save();
-
-    return Redirect::route('profile.edit')->with('status', 'profile-updated');
-}
-
 
     /**
      * Delete the user's account.
