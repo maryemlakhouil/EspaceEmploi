@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class CandidateProfileFactory extends Factory
+class EducationFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +17,9 @@ class CandidateProfileFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => fake()->jobTitle(),
+             'diploma' => fake()->randomElement(['Licence', 'Master', 'Doctorat']),
+            'school' => fake()->company(),
+            'year' => fake()->year(),
         ];
     }
 }
