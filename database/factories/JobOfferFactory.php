@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Model>
  */
-class SkillFactory extends Factory
+class JobOfferFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,9 +17,7 @@ class SkillFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->randomElement([
-        'Laravel', 'Vue.js', 'React', 'PHP', 'MySQL', 'Anglais'
-         ]),
+            //
         ];
     }
 }
