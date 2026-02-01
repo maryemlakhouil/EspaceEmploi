@@ -17,7 +17,11 @@ class JobOfferFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'company' => fake()->company(),
+            'title' => fake()->jobTitle(),
+            'description' => fake()->paragraph(4),
+            'contract_type' => fake()->randomElement(['CDI', 'CDD', 'Stage', 'Freelance']),
+            'image' => 'offers/default.png',
         ];
     }
 }

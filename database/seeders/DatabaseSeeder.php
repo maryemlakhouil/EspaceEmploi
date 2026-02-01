@@ -5,6 +5,11 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Role;
+use App\Models\Skill;
+use App\Models\CandidateProfile;
+use App\Models\JobOffer;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +20,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
+        
+      // Roles
+        Role::firstOrCreate(['name' => 'chercheur']);
+        Role::firstOrCreate(['name' => 'recruiter']);
 
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // Skills
+        Skill::factory(10)->create();
+
+        // Chercheurs
+        User::factory(10)->create()->each(function ($user) {
+            $user->assignRole('chercheur');
+
+            $profile = CandidateProfile::factory()->create([
+                'user_id' => $user->id,
+            ]);
+
+            $profile->skills()->attach(
+                Skill::inRandomOrder()->take(3)->pluck('id')
+            );
+        });
+
+        // Recruteurs
+        User::factory(3)->create()->each(function ($user) {
+            $user->assignRole('recruiter');
+
+            JobOffer::factory(3)->create([
+                'user_id' => $user->id,
+            ]);
+        });
     }
 }

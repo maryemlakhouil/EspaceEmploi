@@ -17,8 +17,6 @@ return new class extends Migration
              $table->foreignId('job_offer_id')->constrained()->cascadeOnDelete();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete(); // candidat
             $table->string('status')->default('pending');
-            $table->timestamps();
-
             $table->unique(['job_offer_id', 'user_id']);
         });
     }
