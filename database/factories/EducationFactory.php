@@ -17,7 +17,7 @@ class EducationFactory extends Factory
     public function definition(): array
     {
         return [
-             'diploma' => fake()->randomElement(['Licence', 'Master', 'Doctorat']),
+            'diploma' => fake()->randomElement(['Licence', 'Master', 'Doctorat']),
             'school' => fake()->company(),
             'year' => fake()->year(),
         ];

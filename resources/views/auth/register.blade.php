@@ -44,7 +44,8 @@
             <select id="role" name="role" class="block mt-1 w-full" required>
                 <option value="">-- Choisir un rôle --</option>
                 <option value="recruiter">Recruteur</option>
-                <option value="job_seeker">Chercheur d’emploi</option>
+                <option value="chercheur">Chercheur d’emploi</option>
+
             </select>
         </div>
 

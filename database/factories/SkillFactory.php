@@ -17,8 +17,14 @@ class SkillFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->unique()->randomElement([
+            'name' => fake()->randomElement([
         'Laravel', 'Vue.js', 'React', 'PHP', 'MySQL', 'Anglais','Gestion de projet', 
+           'Java', 'Spring Boot',
+            'JavaScript', 'Vue.js', 'React',
+            'Python', 'Django',
+            'PostgreSQL',
+            'Docker', 'Git', 'Linux',
+            'HTML', 'CSS', 'Tailwind'
          ]),
         ];
     }

@@ -18,7 +18,6 @@ class CandidateProfileFactory extends Factory
     {
         return [
             'title' => fake()->jobTitle(),
-             'bio' => $this->faker->paragraph(),
         ];
     }
 }

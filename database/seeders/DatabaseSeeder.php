@@ -36,9 +36,10 @@ class DatabaseSeeder extends Seeder
                 'user_id' => $user->id,
             ]);
 
+            
             $profile->skills()->attach(
-                Skill::inRandomOrder()->take(3)->pluck('id')
-            );
+            \App\Models\Skill::inRandomOrder()->take(3)->pluck('id')
+        );
         });
 
         // Recruteurs
