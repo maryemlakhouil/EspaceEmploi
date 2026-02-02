@@ -59,7 +59,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(CandidateProfile::class);
     }
-    
+
+    /*
+    *
+    */
 
 
 }
