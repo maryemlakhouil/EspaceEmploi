@@ -1,0 +1,14 @@
+[90m= [39m[34;4mApp\Models\User[39;24m {#6433
+    [34mid[39m: [35m1[39m,
+    [34mname[39m: "[32mEarnest Kshlerin II[39m",
+    [34memail[39m: "[32mkitty.bogisich@example.com[39m",
+    [34memail_verified_at[39m: "[32m2026-02-02 13:52:55[39m",
+    #[33mpassword[39m: "[32m$2y$12$fJi5rGMRVn29Ad7nfrWnWu3Ss7hM7Y4y.vXGB.nKhZyzJYYt2MV4K[39m",
+    #[33mremember_token[39m: "[32maMgePyYicp[39m",
+    [34mcreated_at[39m: "[32m2026-02-02 13:52:55[39m",
+    [34mupdated_at[39m: "[32m2026-02-02 13:52:55[39m",
+    [34mspecialite[39m: [36mnull[39m,
+    [34mbio[39m: [36mnull[39m,
+    [34mphoto[39m: [36mnull[39m,
+  }
+

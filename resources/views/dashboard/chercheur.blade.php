@@ -15,6 +15,10 @@
             <p class="text-gray-600 mt-2">
                 Explorez des profils, développez votre réseau et découvrez de nouvelles opportunités.
             </p>
+            <a href="{{ route('job-offers.index') }}"
+               class="inline-block bg-blue-600 text-white px-4 py-2 rounded">
+                Rechercher des offres
+            </a>
         </div>
 
         <!-- Actions rapides -->

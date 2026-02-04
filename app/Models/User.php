@@ -61,8 +61,12 @@ class User extends Authenticatable
     }
 
     /*
-    *
+    *un recruteur peut creer plusieurs offres 
     */
 
+    public function jobOffers()
+    {
+        return $this->belongsToMany(JobOffer::class, 'applications')->withPivot('status')->withTimestamps();
+    }
 
 }

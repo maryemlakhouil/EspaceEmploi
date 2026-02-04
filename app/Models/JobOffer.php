@@ -14,12 +14,13 @@ class JobOffer extends Model
         'title',
         'description',
         'contract_type',
+        'entreprise',
         'image',
     ];
 
-    public function recruiter()
+    public function User()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function applications()
