@@ -15,6 +15,7 @@ class JobOffer extends Model
         'description',
         'contract_type',
         'entreprise',
+
         'image',
     ];
 
@@ -27,10 +28,15 @@ class JobOffer extends Model
     {
         return $this->hasMany(Application::class);
     }
-    
+
     public function candidates()
     {
         return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
+    }
+
+    public function recrutur()
+    {
+        return $this->belongsTo(User::class)->withTimestamps();
     }
 
 }
