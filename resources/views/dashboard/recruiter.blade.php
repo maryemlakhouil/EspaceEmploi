@@ -1,9 +1,21 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="text-xl font-semibold text-gray-800">
-            Dashboard — Recruteur
-        </h2>
-    </x-slot>
+    <ul class="space-y-2">
+    <li>
+        <a href="{{ route('dashboard.recruiter') }}"
+           class="text-blue-600">Dashboard</a>
+    </li>
+
+    <li>
+        <a href="{{ route('recruiter.applications') }}"
+           class="text-blue-600">Candidatures reçues</a>
+    </li>
+
+    <li>
+        <a href="{{ route('job-offers.index') }}"
+           class="text-blue-600">Mes offres</a>
+    </li>
+</ul>
+
 
     <div class="max-w-6xl mx-auto p-6 space-y-8">
 
@@ -12,6 +24,11 @@
             <h3 class="text-2xl font-bold">
                  Bienvenue {{ auth()->user()->name }}
             </h3>
+            <a href="{{ route('recruiter.applications') }}"
+               class="inline-block bg-indigo-600 text-white px-4 py-2 rounded shadow">
+                Voir les candidatures
+            </a>
+
             <p class="text-gray-600 mt-2">
                 Découvrez des profils de chercheurs d’emploi et développez votre réseau.
             </p>

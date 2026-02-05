@@ -27,4 +27,10 @@ class JobOffer extends Model
     {
         return $this->hasMany(Application::class);
     }
+    
+    public function candidates()
+    {
+        return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
+    }
+
 }
