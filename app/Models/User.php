@@ -86,6 +86,30 @@ class User extends Authenticatable
         return $this->belongsToMany(JobOffer::class, 'applications')->withPivot('status')->withTimestamps();
     }
 
+    public function sentFriendRequests()
+    {
+        return $this->hasMany(Amitie::class, 'sender_id');
+    }
+
+    public function receivedFriendRequests()
+    {
+        return $this->hasMany(Amitie::class, 'receiver_id');
+    }
+
+    public function friends()
+    {
+        return User::whereIn('id', function ($query) {
+            $query->select('receiver_id')->from('Amitie')
+                  ->where('sender_id', auth()->id())
+                  ->where('status', 'accepted');
+        })->orWhereIn('id', function ($query) {
+            $query->select('sender_id')
+                  ->from('Amitie')
+                  ->where('receiver_id', auth()->id())
+                  ->where('status', 'accepted');
+        });
+    }
+
 
 
 }

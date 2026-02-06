@@ -19,7 +19,7 @@
     <h3 class="text-xl font-bold">Candidatures reçues</h3>
     <p class="text-gray-600 mt-2">
         Voir les candidats pour vos offres
-    </p>
+    </p>    
 </a>
 
 </ul>

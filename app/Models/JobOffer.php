@@ -33,9 +33,7 @@ class JobOffer extends Model
         return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
     }
 
-   
-
-  public function recruiter()
+    public function recruiter()
     {
         return $this->belongsTo(User::class, 'user_id');
     }
