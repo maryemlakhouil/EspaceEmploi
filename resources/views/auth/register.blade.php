@@ -48,18 +48,6 @@
 
             </select>
         </div>
-
-        <!-- Spécialité -->
-        <div>
-            <x-input-label for="specialite" value="Spécialité" />
-            <x-text-input id="specialite" name="specialite" class="block mt-1 w-full" />
-        </div>
-
-        <!-- Bio -->
-        <div>
-            <x-input-label for="bio" value="Bio" />
-            <textarea id="bio" name="bio" class="block mt-1 w-full"></textarea>
-        </div>
         
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">

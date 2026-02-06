@@ -4,6 +4,8 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserSearchController;
 use App\Http\Controllers\JobOfferController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RecruterController;
+use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -31,12 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/users/{user}', [UserController::class, 'show'])->middleware('auth')->name('users.show');
     Route::get('/job-offers', [JobOfferController::class, 'index'])->name('job-offers.index');
     Route::get('/job-offers/{jobOffer}', [JobOfferController::class, 'show'])->name('job_offers.show');
-    Route::post('/job-offers/{jobOffer}/apply',[ApplicationController::class, 'store'])->name('applications.store');
-    Route::get('/recruiter/applications',[RecruiterController::class, 'applications'])->name('recruiter.applications');
-    Route::get('/recruiter/applications',[RecruiterController::class, 'applications'])->middleware(['auth', 'role:recruiter'])
-    ->name('recruiter.applications');
-
-
+    Route::post('/job-offers/{jobOffer}', [ApplicationController::class, 'store'])->middleware('auth')->name('applications.store');
+    Route::get('/recruiter/applications',[RecruterController::class,'applications'])->name('recruiter.applications');
+    Route::patch('/applications/{application}/status',[RecruterController::class, 'updateStatus'])->name('applications.updateStatus');
 
 });
 

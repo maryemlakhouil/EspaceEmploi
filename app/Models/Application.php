@@ -15,6 +15,11 @@ class Application extends Model
         'status',
     ];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    
     public function jobOffer()
     {
         return $this->belongsTo(JobOffer::class);

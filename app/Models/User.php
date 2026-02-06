@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
 use App\Models\CandidateProfile;
+use App\Models\Application;
+use App\Models\JobOffer;
 
 
 class User extends Authenticatable
@@ -64,16 +66,26 @@ class User extends Authenticatable
     *un recruteur peut creer plusieurs offres 
     */
 
+    // public function jobOffers()
+    // {
+    //     return $this->belongsToMany(JobOffer::class, 'applications')->withPivot('status')->withTimestamps();
+    // }
+
     public function jobOffers()
     {
-        return $this->belongsToMany(JobOffer::class, 'applications')->withPivot('status')->withTimestamps();
+        return $this->hasMany(JobOffer::class);
     }
 
     public function applications()
     {
         return $this->hasMany(Application::class);
+    } 
+
+    public function appliedJobOffers()
+    {
+        return $this->belongsToMany(JobOffer::class, 'applications')->withPivot('status')->withTimestamps();
     }
-    
+
 
 
 }

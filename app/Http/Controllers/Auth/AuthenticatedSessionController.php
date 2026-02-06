@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
 
-        if ($user->role === 'recruiter') {
+        if ($user->hasRole('recruiter')) {
             return redirect()->route('dashboard.recruiter');
         }
 

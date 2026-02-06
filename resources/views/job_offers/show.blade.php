@@ -23,13 +23,24 @@
                     ← Retour aux offres
                 </a>
 
-                <button class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
-                    Postuler
-                </button>
+                @if ($hasApplied)
+            <span class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg">
+                Déjà postulé
+            </span>
+        @else
+            <form method="POST" action="{{ route('applications.store', $jobOffer->id) }}">
+                    @csrf
+                    <button type="submit"
+                        class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg">
+                        Postuler
+                    </button>
+                </form>
+        @endif
+
+
             </div>
 
         </div>
-        
 
     </div>
 </x-app-layout>

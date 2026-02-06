@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory; 
 
-
 class JobOffer extends Model
 {
      use HasFactory;
@@ -34,9 +33,10 @@ class JobOffer extends Model
         return $this->belongsToMany(User::class, 'applications')->withPivot('status')->withTimestamps();
     }
 
-    public function recrutur()
-    {
-        return $this->belongsTo(User::class)->withTimestamps();
-    }
+   
 
+  public function recruiter()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
