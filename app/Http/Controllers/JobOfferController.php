@@ -12,14 +12,14 @@ class JobOfferController extends Controller
 {
     public function index(Request $request)
     {
-        $query = JobOffer::query();
+     $query = JobOffer::where('user_id', auth()->id()); 
 
         if ($request->filled('title')) {
             $query->where('title', 'ilike', '%' . $request->title . '%');
         }
 
-        if ($request->filled('contract_type')) {
-            $query->where('contract_type', $request->contract_type);
+        if ($request->filled('type_contrat')) {
+            $query->where('type_contrat', $request->type_contrat);
         }
 
 

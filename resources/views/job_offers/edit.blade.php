@@ -45,9 +45,9 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">Type de contrat</label>
-                    <input type="text" name="contract_type" value="{{ old('contract_type', $jobOffer->contract_type) }}"
+                    <input type="text" name="type_contrat" value="{{ old('type_contrat', $jobOffer->type_contrat) }}"
                            class="w-full border rounded-lg p-2" required>
-                    @error('contract_type') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
+                    @error('type_contrat') <p class="text-red-600 text-sm mt-1">{{ $message }}</p> @enderror
                 </div>
 
                 <div>

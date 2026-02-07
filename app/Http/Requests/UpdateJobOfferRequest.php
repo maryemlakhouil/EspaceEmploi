@@ -11,7 +11,7 @@ class UpdateJobOfferRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class UpdateJobOfferRequest extends FormRequest
             'company' => ['required','string','max:255'],
             'title' => ['required','string','max:255'],
             'description' => ['required','string'],
-            'contract_type' => ['required','string','max:255'],
+            'type_contrat' => ['required','string','max:255'], 
             'image' => ['nullable','file','mimes:jpg,png','max:2048'],
         ];
     }

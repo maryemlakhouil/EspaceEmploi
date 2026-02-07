@@ -11,7 +11,7 @@ class StoreJobOfferRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,8 +25,15 @@ class StoreJobOfferRequest extends FormRequest
             'company' => ['required','string','max:255'],
             'title' => ['required','string','max:255'],
             'description' => ['required','string'],
-            'contract_type' => ['required','string','max:255'],
+            'type_contrat' => ['required','string','max:255'], 
             'image' => ['required','file','mimes:jpg,png','max:2048'],
-         ];
+         ]; 
+    }
+
+    public function attributes(): array
+    {
+        return [
+            'type_contrat' => 'type de contrat',
+        ];
     }
 }

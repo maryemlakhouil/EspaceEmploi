@@ -34,6 +34,8 @@
             <p class="text-gray-600 mt-2">
                 Gérez vos offres, suivez les candidatures et clôturez les annonces.
             </p>
+            <div class="text-xs text-gray-500">Mon user_id: {{ auth()->id() }}</div>
+
 
             <div class="mt-4 flex flex-wrap gap-3">
                 <a href="{{ route('job-offers.create') }}"
