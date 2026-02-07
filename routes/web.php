@@ -40,6 +40,15 @@ Route::middleware('auth')->group(function () {
     Route::post('/friends/{user}', [AmitieController::class, 'send'])->name('friends.send');
     Route::post('/friends/{amitie}/accept', [AmitieController::class, 'accept'])->name('friends.accept');
     Route::post('/friends/{amitie}/reject', [AmitieController::class, 'reject'])->name('friends.reject');
+    
+    Route::get('/recruiter/job-offers/create', [JobOfferController::class,'create'])->name('job-offers.create');
+    Route::post('/recruiter/job-offers', [JobOfferController::class,'store'])->name('job-offers.store');
+
+    Route::get('/recruiter/job-offers/{jobOffer}/edit', [JobOfferController::class,'edit'])->name('job-offers.edit');
+    Route::patch('/recruiter/job-offers/{jobOffer}', [JobOfferController::class,'update'])->name('job-offers.update');
+
+    Route::patch('/recruiter/job-offers/{jobOffer}/close', [JobOfferController::class,'close'])->name('job-offers.close');
+
 
 });
 
