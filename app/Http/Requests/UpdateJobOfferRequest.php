@@ -22,7 +22,11 @@ class UpdateJobOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'company' => ['required','string','max:255'],
+            'title' => ['required','string','max:255'],
+            'description' => ['required','string'],
+            'contract_type' => ['required','string','max:255'],
+            'image' => ['nullable','file','mimes:jpg,png','max:2048'],
         ];
     }
 }

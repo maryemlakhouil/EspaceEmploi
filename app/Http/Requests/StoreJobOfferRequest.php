@@ -21,8 +21,12 @@ class StoreJobOfferRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
-        ];
+         return [
+            'company' => ['required','string','max:255'],
+            'title' => ['required','string','max:255'],
+            'description' => ['required','string'],
+            'contract_type' => ['required','string','max:255'],
+            'image' => ['required','file','mimes:jpg,png','max:2048'],
+         ];
     }
 }
