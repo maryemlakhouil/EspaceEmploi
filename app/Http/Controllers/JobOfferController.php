@@ -68,5 +68,15 @@ class JobOfferController extends Controller
         return back()->with('success', 'Offre mise à jour');
     }
 
+        
+    public function close(JobOffer $jobOffer)
+    {
+        $this->authorize('close', $jobOffer);
+
+        $jobOffer->update(['is_closed' => true]);
+
+        return back()->with('success', 'Offre clôturée');
+    }
+
 }
 
