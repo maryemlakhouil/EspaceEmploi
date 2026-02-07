@@ -51,6 +51,31 @@
                     Enregistrer le profil
                 </button>
             </div>
+          @if(auth()->id() !== $user->id)
+            <form method="POST" action="{{ route('friends.send', $user->id) }}">
+                @csrf
+                <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">
+                     suivre
+                </button>
+            </form>
+        @endif
+        @foreach(auth()->user()->receivedFriendRequests()->where('status','pending')->get() as $amitie)
+            <div class="flex gap-4">
+                <span>{{ $amitie->sender->name }}</span>
+
+                <form method="POST" action="{{ route('friends.accept', $amitie->id) }}">
+                    @csrf
+                    <button type="submit" class="bg-green-600 text-white px-3 py-1 rounded">Accepter</button>
+                </form>
+
+                <form method="POST" action="{{ route('friends.reject', $amitie->id) }}">
+                    @csrf
+                    <button type="submit" class="bg-red-600 text-white px-3 py-1 rounded">Refuser</button>
+                </form>
+            </div>
+        @endforeach
+
+
         </div>
     </div>
 </x-app-layout>

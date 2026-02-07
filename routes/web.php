@@ -7,15 +7,15 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RecruterController;
 use App\Http\Controllers\ApplicationController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AmitieController;
 
 
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/dashboard', function () {
-    return view('dashboard/recruiter');
-})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -36,6 +36,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/job-offers/{jobOffer}', [ApplicationController::class, 'store'])->middleware('auth')->name('applications.store');
     Route::get('/recruiter/applications',[RecruterController::class,'applications'])->name('recruiter.applications');
     Route::patch('/applications/{application}/status',[RecruterController::class, 'updateStatus'])->name('applications.updateStatus');
+
+    Route::post('/friends/{user}', [AmitieController::class, 'send'])->name('friends.send');
+    Route::post('/friends/{amitie}/accept', [AmitieController::class, 'accept'])->name('friends.accept');
+    Route::post('/friends/{amitie}/reject', [AmitieController::class, 'reject'])->name('friends.reject');
 
 });
 
