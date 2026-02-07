@@ -35,11 +35,11 @@ class JobOfferPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, JobOffer $jobOffer): bool
+   
+    public function update($user, JobOffer $jobOffer): bool
     {
-        return false;
+        return $user->id === $jobOffer->user_id;
     }
-
     /**
      * Determine whether the user can delete the model.
      */
@@ -62,5 +62,9 @@ class JobOfferPolicy
     public function forceDelete(User $user, JobOffer $jobOffer): bool
     {
         return false;
+    }
+    public function close($user, JobOffer $jobOffer): bool
+    {
+        return $user->id === $jobOffer->user_id;
     }
 }

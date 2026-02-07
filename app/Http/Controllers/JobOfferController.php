@@ -18,8 +18,8 @@ class JobOfferController extends Controller
             $query->where('title', 'ilike', '%' . $request->title . '%');
         }
 
-        if ($request->filled('type_contrat')) {
-            $query->where('type_contrat', $request->type_contrat);
+        if ($request->filled('contract_type')) {
+            $query->where('contract_type', $request->contract_type);
         }
 
 
@@ -68,7 +68,7 @@ class JobOfferController extends Controller
         return back()->with('success', 'Offre mise à jour');
     }
 
-        
+
     public function close(JobOffer $jobOffer)
     {
         $this->authorize('close', $jobOffer);
@@ -77,6 +77,19 @@ class JobOfferController extends Controller
 
         return back()->with('success', 'Offre clôturée');
     }
+
+    public function create()
+    {
+        return view('job_offers.create');
+    }
+
+    public function edit(JobOffer $jobOffer)
+    {
+        $this->authorize('update', $jobOffer);
+
+        return view('job_offers.edit', compact('jobOffer'));
+    }
+
 
 }
 
