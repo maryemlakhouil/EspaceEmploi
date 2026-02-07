@@ -14,9 +14,13 @@ class JobOffer extends Model
         'description',
         'contract_type',
         'entreprise',
-
         'image',
+        'is_closed',
     ];
+
+        protected $casts = [
+            'is_closed' => 'boolean',
+        ];
 
     public function User()
     {
