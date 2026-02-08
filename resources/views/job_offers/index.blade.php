@@ -2,6 +2,7 @@
     <x-slot name="header">
         <div class="flex items-center justify-between">
             <h2 class="text-xl font-semibold text-gray-800">Mes offres</h2>
+            @role('recruiter')
             <a href="{{ route('job-offers.create') }}"
                class="px-5 py-2 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 transition duration-200 shadow-sm flex items-center gap-2">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -9,6 +10,7 @@
                 </svg>
                 Créer une offre
             </a>
+            @endrole
         </div>
     </x-slot>
 
@@ -72,6 +74,11 @@
                     </div>
 
                     <div class="flex items-center gap-3 ml-4 flex-shrink-0">
+                        <a href="{{ route('job_offers.show', $offer->id) }}"
+                               class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-100">
+                               Détails
+                            </a>
+                            @if(auth()->check() && auth()->user()->hasRole('recruiter') && $offer->user_id === auth()->id())
                         <a href="{{ route('job-offers.edit', $offer->id) }}"
                            class="px-4 py-2 rounded-lg border border-gray-300 text-gray-900 font-semibold hover:bg-gray-100 transition duration-200 flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -91,6 +98,7 @@
                                     Clôturer
                                 </button>
                             </form>
+                        @endif
                         @endif
                     </div>
                 </div>

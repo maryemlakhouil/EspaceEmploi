@@ -12,7 +12,15 @@ class JobOfferController extends Controller
 {
     public function index(Request $request)
     {
-     $query = JobOffer::where('user_id', auth()->id()); 
+        $query = JobOffer::query();
+
+        if (auth()->check() && auth()->user()->hasRole('recruiter')) {
+            // Mes offres (recruteur)
+            $query->where('user_id', auth()->id());
+        } else {
+            // Recherche offres (chercheur)
+            $query->where('is_closed', false);
+        }
 
         if ($request->filled('title')) {
             $query->where('title', 'ilike', '%' . $request->title . '%');
@@ -22,11 +30,11 @@ class JobOfferController extends Controller
             $query->where('type_contrat', $request->type_contrat);
         }
 
-
         $jobOffers = $query->latest()->paginate(6)->withQueryString();
 
         return view('job_offers.index', compact('jobOffers'));
     }
+
 
     public function show(JobOffer $jobOffer)
     {
