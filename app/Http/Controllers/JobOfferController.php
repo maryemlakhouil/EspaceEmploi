@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\StoreJobOfferRequest;
 use App\Http\Requests\UpdateJobOfferRequest;
+use App\Models\Amitie;
 
 class JobOfferController extends Controller
 {
@@ -98,6 +99,9 @@ class JobOfferController extends Controller
         return view('job_offers.edit', compact('jobOffer'));
     }
 
+
+
+    
 
 }
 

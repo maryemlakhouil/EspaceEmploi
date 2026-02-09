@@ -34,13 +34,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/job-offers', [JobOfferController::class, 'index'])->name('job-offers.index');
     Route::get('/job-offers/{jobOffer}', [JobOfferController::class, 'show'])->name('job_offers.show');
 
-    Route::middleware(['auth', 'role:recruiter'])->group(function () {
-        Route::get('/recruiter/job-offers/create', [JobOfferController::class,'create'])->name('job-offers.create');
-        Route::post('/recruiter/job-offers', [JobOfferController::class,'store'])->name('job-offers.store');
-        Route::get('/recruiter/job-offers/{jobOffer}/edit', [JobOfferController::class,'edit'])->name('job-offers.edit');
-        Route::patch('/recruiter/job-offers/{jobOffer}', [JobOfferController::class,'update'])->name('job-offers.update');
-        Route::patch('/recruiter/job-offers/{jobOffer}/close', [JobOfferController::class,'close'])->name('job-offers.close');
-    });
+    Route::middleware(['auth'])->group(function () {
+    Route::get('/recruiter/job-offers/create', [JobOfferController::class,'create'])->name('job-offers.create');
+    Route::post('/recruiter/job-offers', [JobOfferController::class,'store'])->name('job-offers.store');
+    Route::get('/recruiter/job-offers/{jobOffer}/edit', [JobOfferController::class,'edit'])->name('job-offers.edit');
+    Route::patch('/recruiter/job-offers/{jobOffer}', [JobOfferController::class,'update'])->name('job-offers.update');
+    Route::patch('/recruiter/job-offers/{jobOffer}/close', [JobOfferController::class,'close'])->name('job-offers.close');
+});
+
 
     Route::post('/job-offers/{jobOffer}', [ApplicationController::class, 'store'])->middleware('auth')->name('applications.store');
     Route::get('/recruiter/applications',[RecruterController::class,'applications'])->name('recruiter.applications');

@@ -3,22 +3,29 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Spatie\Permission\Models\Role;
 
 class AppServiceProvider extends ServiceProvider
 {
     /**
-     * Register any application services.
+     * Enregistre les services d'application.
+     *
+     * @return void
      */
-    public function register(): void
+    public function register()
     {
         //
     }
 
     /**
-     * Bootstrap any application services.
+     * Bootstrap les services d'application.
+     *
+     * @return void
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        // Crée les rôles uniquement s'ils n'existent pas
+        Role::firstOrCreate(['name' => 'recruiter']);
+        Role::firstOrCreate(['name' => 'chercheur']);
     }
 }
